@@ -3,20 +3,32 @@
 import { useState } from "react";
 import { setCookie } from "./actions";
 
-export default function Test() {
+export default function HomePage() {
   const [state, setState] = useState(false);
 
   return (
     <>
       <button
         className="m-auto block"
-        onClick={() => setCookie("theme", "light")}
+        onClick={() =>
+          fetch("api/set-cookie", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ key: "theme", value: "light" }),
+          })
+        }
       >
         Light
       </button>
       <button
         className="m-auto block"
-        onClick={() => setCookie("theme", "dark")}
+        onClick={() =>
+          fetch("api/set-cookie", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ key: "theme", value: "dark" }),
+          })
+        }
       >
         Dark
       </button>

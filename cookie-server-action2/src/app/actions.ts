@@ -8,7 +8,6 @@ export async function getCookies<ValueType>(
 ): Promise<ValueType> {
   const cookieStore = cookies();
   const cookie = cookieStore.get(key)?.value;
-  console.log("cookie get", key, cookie);
 
   return cookie ? (JSON.parse(cookie) as ValueType) : defaultValue;
 }
