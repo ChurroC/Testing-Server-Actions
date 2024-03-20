@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-black dark:text-white;
+  }
+
+  fieldset {
+    @apply border-2 border-gray-500 p-3 min-w-[300px];
+  }
+
+  button {
+    @apply p-2 m-2 min-w-[75px] p-3 tracking-widest;
+    @apply rounded-md border-2 border-purple-500 hover:border-purple-700;
+    @apply text-gray-400 transition-all duration-200 ease-in-out hover:text-purple-200;
+  }
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
