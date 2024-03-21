@@ -2,18 +2,13 @@
 
 import { cookies } from "next/headers";
 
-export async function getCookies<ValueType>(
-  key: string,
-  defaultValue: ValueType,
-): Promise<ValueType> {
-  const cookieStore = cookies();
-  const cookie = cookieStore.get(key)?.value;
-  console.log("cookie get", key, cookie);
-
-  return cookie ? (JSON.parse(cookie) as ValueType) : defaultValue;
+export async function setCookie(value: string) {
+  cookies().set("theme", value);
+  console.log("themeSetThroughAction", value);
 }
 
-export async function setCookie<ValueType>(key: string, value: ValueType) {
-  cookies().set(key, JSON.stringify(value));
-  console.log("cookie set", key, value);
+export async function cookielessSmash() {
+  return Promise.resolve({
+    actionNow: Date.now(),
+  });
 }
